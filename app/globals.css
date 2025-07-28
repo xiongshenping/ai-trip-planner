@@ -19,6 +19,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
+  /* background-color: #fcf7ef; */
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,4 +40,26 @@ a {
   html {
     color-scheme: dark;
   }
+}
+body{
+  min-height: 100vh;
+}
+
+.wmhd{
+display: flex;
+align-items: center;
+}
+.wmhd_logo{
+  width:101px;
+  height: 120px;
+  background: url('/logo.png');
+  background-size: contain;
+}
+.wmhd_info{padding: 0 30px;}
+.wmhd_title{font-size: 4em;line-height: 1;}
+.wmhd_description{font-size: 3em;line-height: 1;}
+
+.status{
+  display: flex;
+  align-items: center;
 }

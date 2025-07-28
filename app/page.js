@@ -1,95 +1,118 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import React from "react";
+import {
+  Button,
+  Form,
+  Input,
+  InputNumber,
+  DatePicker,
+  Select,
+  Space,
+  Tooltip,
+  Typography,
+  Row,
+  Col,
+  Card,
+  List,
+} from "antd";
+import Link from "next/link";
+const { Option } = Select;
+const { Meta } = Card;
+const { Item } = List;
+const onFinish = (values) => {
+  console.log("Received values of form: ", values);
+};
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const data = [
+  {
+    title: "Title 1",
+    id:'1'
+  },
+  {
+    title: "Title 2",
+    id:'2'
+  },
+  {
+    title: "Title 3",
+    id:'3'
+  },
+  {
+    title: "Title 4",
+    id:'4'
+  },
+];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Form
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 14 }}
+      size="large"
+      onFinish={onFinish}
+      layout="vertical"
+    >
+      <Form.Item
+        label="Destination"
+        name="destination"
+        rules={[{ required: true, message: "Destination is required" }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Preference"
+        name="preference"
+        rules={[{ required: true, message: "Preference is required" }]}
+      >
+        <Select>
+          <Select.Option value="preference1">preference1</Select.Option>
+          <Select.Option value="preference2">preference2</Select.Option>
+          <Select.Option value="preference3">preference3</Select.Option>
+          <Select.Option value="preference4">preference4</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        label="People"
+        name="people"
+        rules={[{ required: true, message: "How many people with you?" }]}
+      >
+        <InputNumber />
+      </Form.Item>
+      <Form.Item
+        label="Date"
+        name="date"
+        rules={[{ required: true, message: "Date is required" }]}
+      >
+        <DatePicker />
+      </Form.Item>
+
+      <Form.Item label="">
+        <Button type="primary" htmlType="submit">
+          Create Trip
+        </Button>
+      </Form.Item>
+    </Form>
+    <div>Tell me the why - I’ll nail the when, where & what</div>
+    <List
+      grid={{ gutter: 16, column: 4 }}
+      dataSource={data}
+      renderItem={(item) => (
+        <List.Item>
+          <Link href={`/trip/${item.id}`}>
+            <Card
+              hoverable
+              cover={
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta title={item.title} description="www.instagram.com" />
+            </Card>
+          </Link>
+        </List.Item>
+      )}
+    />
+  </div>
+);
+export default App;
