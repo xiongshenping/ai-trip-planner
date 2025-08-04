@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Markdown from 'react-markdown'
 import { Skeleton } from 'antd';
@@ -9,7 +9,7 @@ import { useAuth } from "react-oidc-context";
 
 
 
-const App = () => {
+const InnerApp = () => {
     const auth = useAuth();
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(true);
@@ -56,5 +56,13 @@ const App = () => {
         </div>
     )
 
+};
+
+const App = () => {
+  return (
+    <Suspense>
+      <InnerApp />
+    </Suspense>
+  );
 };
 export default App;

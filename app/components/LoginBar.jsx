@@ -1,3 +1,4 @@
+"use client";
 import { useAuth } from "react-oidc-context";
 import { Button } from "antd";
 import { UserAddOutlined } from "@ant-design/icons";

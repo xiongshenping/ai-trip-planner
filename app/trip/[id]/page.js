@@ -5,7 +5,7 @@ import React, { useEffect,useState } from 'react'
 import Markdown from 'react-markdown'
 import { Skeleton } from 'antd';
 
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 import { useParams } from 'next/navigation';
 
 

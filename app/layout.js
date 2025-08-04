@@ -12,16 +12,18 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { AuthProvider } from "react-oidc-context";
 import LoginBar from "./components/LoginBar";
 
-const currentURL=`${window.location.origin}/`;
-const cognitoAuthConfig = {
-  authority: "https://cognito-idp.ca-central-1.amazonaws.com/ca-central-1_DmvfKYuqZ",
-  client_id: "3e8mco70n2u93o8okhbsoam66c",
-  redirect_uri: currentURL,
-  response_type: "code",
-  scope: "email openid profile",
-};
+
 
 export default function RootLayout({ children }) {
+  const isClient = typeof window !== "undefined";
+  const currentURL = isClient ? `${window.location.origin}/` : "";
+  const cognitoAuthConfig = {
+    authority: "https://cognito-idp.ca-central-1.amazonaws.com/ca-central-1_DmvfKYuqZ",
+    client_id: "3e8mco70n2u93o8okhbsoam66c",
+    redirect_uri: currentURL,
+    response_type: "code",
+    scope: "email openid profile",
+  };
   return (
     <html lang="en">
       <body style={{
