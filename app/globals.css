@@ -49,9 +49,17 @@ body{
 display: flex;
 align-items: center;
 }
+.wmhd_logo_wrap{
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
 .wmhd_logo{
-  width:101px;
-  height: 120px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width:100px;
+  height: 119px;
   background: url('/logo.png');
   background-size: contain;
 }
@@ -62,4 +70,7 @@ align-items: center;
 .status{
   display: flex;
   align-items: center;
+}
+.ant-select-selector{
+  border: none !important;
 }
